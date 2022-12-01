@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import {useState} from "react";
 import {useAppDispatch, useAppSelector} from "../src/store";
-import {add, remove} from "../src/features/todoSlice";
+import {add, remove, markCompleted} from "../src/features/todoSlice";
 import {stat} from "fs";
 
 export default function Home() {
@@ -21,6 +21,10 @@ export default function Home() {
         dispatch(remove(id))
     }
 
+    const onMark = (id: string) => {
+        dispatch(markCompleted(id))
+    }
+
   return (
     <>
         <div>
@@ -29,6 +33,7 @@ export default function Home() {
             <ul>
                 {todos.map((todo) => (
                     <li key={todo.id}>
+                        <button onClick={() => onMark(todo.id)}>{todo.completed ? "Mark Completed" : "Mark does not completed"}</button>
                         <button onClick={() => onDelete(todo.id)}>Delete</button>
                         <span>{todo.title}</span>
                     </li>
