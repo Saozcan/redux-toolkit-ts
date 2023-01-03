@@ -26,5 +26,5 @@ const todoSlice = createSlice({
     } // oluşturmak istenilen actioncreaterlar buraya giriliyor
 }) // obje istiyor
 
-export default todoSlice.reducer;
+export default todoSlice.reducer; //todos dışayıra default ediliyor.
 export const {add, remove, markCompleted} = todoSlice.actions;

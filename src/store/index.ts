@@ -1,10 +1,12 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux"
 import todoSlice from "../features/todoSlice";
+import counterSlice from "../features/counterSlice";
 
 const store = configureStore({
     reducer: {
-        todos: todoSlice,
+        todos: todoSlice, //çağırılırken burdan çağırma işlemi kullanılacak.
+        counter: counterSlice, //çağırılırken burdan çağırma işlemi kullanılacak.
     }
 })
 
