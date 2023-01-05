@@ -1,11 +1,14 @@
 import styles from '../styles/Home.module.css'
-import {useState} from "react";
-import {useAppDispatch, useAppSelector} from "../src/store";
+import {useRef, useState} from "react";
+import {useAppDispatch, useAppSelector} from "../src/store/store";
 import {add, remove, markCompleted} from "../src/features/todoSlice";
 import {stat} from "fs";
 import {decrement, increment} from "../src/features/counterSlice";
+import {useRouter} from "next/router";
 
 export default function Home() {
+
+  const router = useRouter();
 
     const todos = useAppSelector(state => state.todos);
     const counter = useAppSelector(state => state.counter);
@@ -44,7 +47,11 @@ export default function Home() {
           <button onClick={() => dispatch(increment())}>increment</button>
           <button onClick={() => dispatch(decrement())}>decrement</button>
           <div><span>Counter</span><span>: {counter.count}</span></div>
+
+          <button onClick={() => {router.push("/login")}} >Login</button>
         </div>
+
+
 
     </>
   )
